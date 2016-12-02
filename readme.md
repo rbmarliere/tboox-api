@@ -35,7 +35,7 @@ This is the tboox web tree. It provides a web api for usage inside the tboox And
 * Receive the index of the user timeline
 
 ###### POST /api/user/login
-Logs the user in the api middleware using the POST parameter 'user'
+* Logs the user in the api middleware using the POST parameter 'user'
 
 ## TODO
 
