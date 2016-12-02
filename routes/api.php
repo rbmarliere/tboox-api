@@ -15,9 +15,21 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'auth:api'], function() {
     /* -*- RESOURCES -*- */
-    Route::resource('/book', 'api\BookController');
-    Route::resource('/collection', 'api\CollectionController');
-    Route::resource('/review', 'api\ReviewController');
+    Route::resource(
+        '/book',
+        'api\BookController',
+        ['only' => ['index', 'show']]
+    );
+    Route::resource(
+        '/collection',
+        'api\CollectionController',
+        ['only' => ['index', 'store', 'destroy']]
+    );
+    Route::resource(
+        '/review',
+        'api\ReviewController',
+        ['only' => ['index', 'show', 'store', 'destroy']]
+    );
 
     /* -*- GET -*- */
     Route::get('/timeline', 'api\TimelineController@index');
