@@ -44,4 +44,4 @@ This is the tboox web tree. It provides a web api for usage inside the tboox And
 
 ## License
 
-The tboox web api is open######sourced software licensed under the [GPLv2 license](https://www.gnu.org/licenses/gpl-2.0.html)
+The tboox web api is open-sourced software licensed under the [GPLv2 license](https://www.gnu.org/licenses/gpl-2.0.html)
