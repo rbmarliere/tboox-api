@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Traits\RemembersResponses;
+use App\Serializers\Api as ApiSerializer;
 
 class ApiController extends Controller
 {
@@ -16,7 +17,6 @@ class ApiController extends Controller
 
     public function __construct()
     {
-        parent::__construct();
         $this->serializer = new ApiSerializer();
         $this->includes = [];
     }
@@ -24,7 +24,7 @@ class ApiController extends Controller
     public function destroy($uuid)
     {
         try {
-            $this->model->destroy($uuid);
+            $this->model->destroyOrFail($uuid);
             $response = [ 'message' => 'OK' ];
         } catch (Exception $e) {
             $response = [ 'message' => 'FAILURE' ];

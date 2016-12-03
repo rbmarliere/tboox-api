@@ -10,7 +10,6 @@ class BookController extends ApiController
 {
     public function __construct(Book $model)
     {
-        parent::__construct();
         $this->model = $model;
         $this->transformer = new BookTransformer();
     }

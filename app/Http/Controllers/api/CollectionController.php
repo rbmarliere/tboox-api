@@ -10,7 +10,6 @@ class CollectionController extends ApiController
 {
     public function __construct(Collection $model)
     {
-        parent::__construct();
         $this->model = $model;
         $this->transformer = new CollectionTransformer();
     }
