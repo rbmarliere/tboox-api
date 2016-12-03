@@ -18,22 +18,49 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::resource(
         '/book',
         'api\BookController',
-        ['only' => ['index', 'show']]
+        ['only' => [
+            'index',
+            'show'
+        ]]
     );
     Route::resource(
         '/collection',
         'api\CollectionController',
-        ['only' => ['index', 'store', 'destroy']]
+        ['only' => [
+            'destroy',
+            'index',
+            'store'
+        ]]
     );
     Route::resource(
         '/review',
         'api\ReviewController',
-        ['only' => ['index', 'show', 'store', 'destroy']]
+        ['only' => [
+            'destroy',
+            'index',
+            'show',
+            'store'
+        ]]
+    );
+    Route::resource(
+        '/user',
+        'api\UserController',
+        ['only' => [
+            'index',
+            'show',
+            'store'
+        ]]
     );
 
-    /* -*- GET -*- */
-    Route::get('/timeline', 'api\TimelineController@index');
+    /* -*- USER -*- */
+    Route::group(['prefix' => 'user'], function() {
+        /* -*- GET -*- */
+        Route::get('timeline', 'api\UserController@index');
+        Route::get('{user_id}/subscribe', 'api\UserController@subscribe');
+        Route::get('{user_id}/unsubscribe', 'api\UserController@unsubscribe');
 
-    /* -*- POST -*- */
-    Route::post('/user/login', 'api\UserController@login');
+        /* -*- POST -*- */
+        Route::post('login', 'api\UserController@login');
+    });
+
 });
