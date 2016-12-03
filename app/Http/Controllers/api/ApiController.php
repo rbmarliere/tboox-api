@@ -13,6 +13,12 @@ class ApiController extends Controller
     private $serializer;
     private $transformer;
 
+    public function __construct()
+    {
+        $this->serializer = new ApiSerializer.php;
+        $this->includes = [];
+    }
+
     public function destroy($uuid)
     {
         try {
@@ -44,7 +50,7 @@ class ApiController extends Controller
         return $this->remember(function () {
             return response()->json(
                 fractal()->
-                collection($this->model->show($uuid))->
+                item($this->model->show($uuid))->
                 transformWith($this->transformer)->
                 parseIncludes($this->includes)->
                 serializeWith($this->serializer)->
