@@ -14,7 +14,7 @@ trait RemembersResponses
     private function remember(Closure $response)
     {
         $cache_key = cache_key(request()->path());
-        return Cache::remember($cache_key, 1440, $response);
+        return Cache::remember($cache_key, CACHE_JSON, $response);
     }
 }
 

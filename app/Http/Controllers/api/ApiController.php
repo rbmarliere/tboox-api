@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller as Controller;
+use App\Http\Controllers\Controller;
+use App\Traits\RemembersResponses;
 
 class ApiController extends Controller
 {
@@ -16,7 +17,7 @@ class ApiController extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->serializer = new ApiSerializer.php;
+        $this->serializer = new ApiSerializer();
         $this->includes = [];
     }
 
