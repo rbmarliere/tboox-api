@@ -2,27 +2,21 @@
 
 namespace App\Http\Controllers\api;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
+use App\Http\Controllers\Controller as Controller;
 
-class Controller extends BaseController
+class ApiController extends Controller
 {
-    use AuthorizesRequests;
-    use DispatchesJobs;
     use RemembersResponses;
-    use ValidatesRequests;
 
     private $includes;
-    private $repository;
+    private $model;
     private $serializer;
     private $transformer;
 
     public function destroy($uuid)
     {
         try {
-            $this->repository->destroy($uuid);
+            $this->model->destroy($uuid);
             $response = [ 'message' => 'OK' ];
         } catch (Exception $e) {
             $response = [ 'message' => 'FAILURE' ];
@@ -35,7 +29,7 @@ class Controller extends BaseController
     {
         $response =
             fractal()->
-            collection($this->repository->index())->
+            collection($this->model->index())->
             transformWith($this->transformer)->
             parseIncludes($this->includes)->
             serializeWith($this->serializer)->
@@ -50,7 +44,7 @@ class Controller extends BaseController
     {
         $response =
             fractal()->
-            collection($this->repository->show($uuid))->
+            collection($this->model->show($uuid))->
             transformWith($this->transformer)->
             parseIncludes($this->includes)->
             serializeWith($this->serializer)->
@@ -64,7 +58,7 @@ class Controller extends BaseController
     public function store()
     {
         try {
-            $this->repository->createOrFail(request()->all());
+            $this->model->createOrFail(request()->all());
             $response = [ 'message' => 'OK' ];
         } catch (Exception $e) {
             $reponse = [ 'message' => 'FAILURE' ];
