@@ -10,6 +10,7 @@ class UserController extends ApiController
 {
     public function __construct(User $model)
     {
+        parent::__construct();
         $this->model = $model;
         $this->transformer = new UserTransformer();
     }

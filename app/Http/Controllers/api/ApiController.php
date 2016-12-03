@@ -15,6 +15,7 @@ class ApiController extends Controller
 
     public function __construct()
     {
+        parent::__construct();
         $this->serializer = new ApiSerializer.php;
         $this->includes = [];
     }

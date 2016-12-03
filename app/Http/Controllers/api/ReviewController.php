@@ -10,6 +10,7 @@ class ReviewController extends ApiController
 {
     public function __construct(Review $model)
     {
+        parent::__construct();
         $this->model = $model;
         $this->transformer = new ReviewTransformer();
     }
