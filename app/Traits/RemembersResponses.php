@@ -11,14 +11,10 @@ trait RemembersResponses
         return $prefix . '_' . substr(md5($prefix), 0, 4);
     }
 
-    private function remember(array $response)
+    private function remember(Closure $response)
     {
-        $prefix = request()->path() . '_' . auth()-user()->id;
-        $cache_key = cache_key($prefix);
-
-        Cache::add($cache_key, $response, 1440);
-
-        return Cache::get($cache_key);
+        $cache_key = cache_key(request()->path());
+        return Cache::remember($cache_key, 1440, $response);
     }
 }
 

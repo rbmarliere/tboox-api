@@ -27,32 +27,30 @@ class ApiController extends Controller
 
     public function index()
     {
-        $response =
-            fractal()->
-            collection($this->model->index())->
-            transformWith($this->transformer)->
-            parseIncludes($this->includes)->
-            serializeWith($this->serializer)->
-            toArray();
-
-        $this->remember($response);
-
-        return response()->json($response);
+        return $this->remember(function () {
+            return response()->json(
+                fractal()->
+                collection($this->model->index())->
+                transformWith($this->transformer)->
+                parseIncludes($this->includes)->
+                serializeWith($this->serializer)->
+                toArray()
+            );
+        });
     }
 
     public function show($uuid)
     {
-        $response =
-            fractal()->
-            collection($this->model->show($uuid))->
-            transformWith($this->transformer)->
-            parseIncludes($this->includes)->
-            serializeWith($this->serializer)->
-            toArray();
-
-        $this->remember($response);
-
-        return response()->json($response);
+        return $this->remember(function () {
+            return response()->json(
+                fractal()->
+                collection($this->model->show($uuid))->
+                transformWith($this->transformer)->
+                parseIncludes($this->includes)->
+                serializeWith($this->serializer)->
+                toArray()
+            );
+        });
     }
 
     public function store()
