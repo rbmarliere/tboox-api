@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Repositories\Collection as Collection;
 use App\Transformers\Collection as CollectionTransformer;
