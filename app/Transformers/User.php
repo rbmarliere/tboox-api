@@ -3,16 +3,15 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Models\Book as M_Book;
+use App\Models\User as M_User;
 
-class Book extends TransformerAbstract
+class User extends TransformerAbstract
 {
-    public function transform(M_Book $model) : array
+    public function transform(M_User $model) : array
     {
         return [
             'uuid' => $model->uuid,
-            'title' => $model->title,
-            'synopsis' => $model->synopsis,
+            'name' => $model->name,
             'created_at' => $model->created_at->format("Y-m-d")
         ];
     }
