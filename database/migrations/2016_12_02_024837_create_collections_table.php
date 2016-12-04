@@ -21,6 +21,7 @@ class CreateCollectionsTable extends Migration
             $table->integer('book_id')->unsigned();
             $table->foreign('book_id')->references('id')->on('books');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
