@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 interface Repository
 {
-    public function createOrFail(array $fields) : integer;
-    public function destroyOrFail(integer $uuid) : integer;
+    public function createOrFail(array $fields) : Model;
+    public function destroyOrFail(string $uuid) : boolean;
     public function index() : Collection;
-    public function show(integer $uuid) : Model;
+    public function show(string $uuid) : Model;
 }
 

@@ -4,20 +4,21 @@ namespace App\Repositories;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Uuid;
 
 class BaseRepository implements Repository
 {
     protected $model;
 
-    public function createOrFail(array $fields) : integer
+    public function createOrFail(array $fields) : Model
     {
-        $fields['uuid'] = Uuid::generate();
+        $fields['uuid'] = Uuid::uuid4()->toString();
 
         return $this->model
             ->create($fields);
     }
 
-    public function destroyOrFail(integer $uuid) : integer
+    public function destroyOrFail(string $uuid) : boolean
     {
         $deleted = $this->show($uuid);
 
@@ -31,7 +32,7 @@ class BaseRepository implements Repository
             ->all();
     }
 
-    public function show(integer $uuid) : Model
+    public function show(string $uuid) : Model
     {
         return $this->model
             ->where('uuid', $uuid)
