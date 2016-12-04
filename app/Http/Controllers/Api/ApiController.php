@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Traits\RemembersResponses;
-use App\Serializers\Api as Serializer;
 use App\Repositories\Repository;
+use App\Serializers\Api as Serializer;
+use App\Traits\RemembersResponses;
 use App\Transformers\Transformer;
 
 class ApiController extends Controller
 {
     use RemembersResponses;
 
-    private $includes;
-    private $model;
-    private $serializer;
-    private $transformer;
+    protected $includes;
+    protected $model;
+    protected $serializer;
+    protected $transformer;
 
     public function __construct(Repository $model, Serializer $serializer, Transformer $transformer)
     {
