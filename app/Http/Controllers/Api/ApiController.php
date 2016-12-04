@@ -4,7 +4,9 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Traits\RemembersResponses;
-use App\Serializers\Api as ApiSerializer;
+use App\Serializers\Api as Serializer;
+use App\Repositories\Repository;
+use App\Transformers\Transformer;
 
 class ApiController extends Controller
 {
@@ -15,19 +17,21 @@ class ApiController extends Controller
     private $serializer;
     private $transformer;
 
-    public function __construct()
+    public function __construct(Repository $model, Serializer $serializer, Transformer $transformer)
     {
-        $this->serializer = new ApiSerializer();
         $this->includes = [];
+        $this->model = $model;
+        $this->serializer = $serializer;
+        $this->transformer = $transformer;
     }
 
     public function destroy($uuid)
     {
         try {
             $this->model->destroyOrFail($uuid);
-            $response = [ 'message' => 'OK' ];
+            $response = [ 'status' => '0' ];
         } catch (Exception $e) {
-            $response = [ 'message' => 'FAILURE' ];
+            $response = [ 'status' => '1' ];
         } finally {
             return response()->json($response);
         }
@@ -65,9 +69,9 @@ class ApiController extends Controller
     {
         try {
             $this->model->createOrFail(request()->all());
-            $response = [ 'message' => 'OK' ];
+            $response = [ 'status' => '0' ];
         } catch (Exception $e) {
-            $reponse = [ 'message' => 'FAILURE' ];
+            $reponse = [ 'status' => '1' ];
         } finally {
             return response()->json($response);
         }
