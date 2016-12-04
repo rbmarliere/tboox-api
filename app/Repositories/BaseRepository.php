@@ -11,6 +11,8 @@ class BaseRepository implements Repository
 
     public function createOrFail(array $fields) : integer
     {
+        $fields['uuid'] = Uuid::generate();
+
         return $this->model
             ->create($fields);
     }
@@ -20,7 +22,7 @@ class BaseRepository implements Repository
         $deleted = $this->show($uuid);
 
         return $deleted
-            ->destroy();
+            ->delete();
     }
 
     public function index() : Collection
