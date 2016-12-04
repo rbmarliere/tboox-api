@@ -2,22 +2,13 @@
 
 namespace App\Repositories;
 
-class User implements Repository
+use App\Models\Book as M_Book;
+
+class Book extends BaseRepository
 {
-    public function createOrFail(array $fields)
+    public function __construct(M_Book $model)
     {
-    }
-
-    public function destroyOrFail(integer $uuid)
-    {
-    }
-
-    public function index()
-    {
-    }
-
-    public function show(integer $uuid)
-    {
+        $this->model = $model;
     }
 }
 

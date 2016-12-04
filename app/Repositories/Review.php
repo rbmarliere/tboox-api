@@ -2,22 +2,13 @@
 
 namespace App\Repositories;
 
-class Review implements Repository
+use App\Models\Review as M_Review;
+
+class Review extends BaseRepository
 {
-    public function createOrFail(array $fields)
+    public function __construct(M_Review $model)
     {
-    }
-
-    public function destroyOrFail(integer $uuid)
-    {
-    }
-
-    public function index()
-    {
-    }
-
-    public function show(integer $uuid)
-    {
+        $this->model = $model;
     }
 }
 

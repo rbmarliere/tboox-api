@@ -2,22 +2,13 @@
 
 namespace App\Repositories;
 
-class Collection implements Repository
+use App\Models\Collection as M_Collection;
+
+class Collection extends BaseRepository
 {
-    public function createOrFail(array $fields)
+    public function __construct(M_Collection $model)
     {
-    }
-
-    public function destroyOrFail(integer $uuid)
-    {
-    }
-
-    public function index()
-    {
-    }
-
-    public function show(integer $uuid)
-    {
+        $this->model = $model;
     }
 }
 
