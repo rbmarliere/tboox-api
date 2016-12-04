@@ -10,6 +10,7 @@ class Collection extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'uuid',
         'book_id',
         'user_id'
     ];

@@ -10,6 +10,7 @@ class Review extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'uuid',
         'collection_id',
         'rating',
         'description'
