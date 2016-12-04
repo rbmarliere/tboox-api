@@ -7,6 +7,7 @@ use App\Repositories\Repository;
 use App\Serializers\Api as Serializer;
 use App\Traits\RemembersResponses;
 use App\Transformers\Transformer;
+use Illuminate\Http\Request;
 use League\Fractal\TransformerAbstract;
 
 class ApiController extends Controller
@@ -31,11 +32,11 @@ class ApiController extends Controller
         try {
             $this->model->destroyOrFail($uuid);
             $response = [ 'status' => '0' ];
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $response = [ 'status' => '1' ];
-        } finally {
-            return response()->json($response);
         }
+
+        return response()->json($response);
     }
 
     public function index()
@@ -54,7 +55,7 @@ class ApiController extends Controller
 
     public function show($uuid)
     {
-        return $this->remember(function () {
+        return $this->remember(function () use ($uuid) {
             return response()->json(
                 fractal()->
                 item($this->model->show($uuid))->
@@ -66,16 +67,20 @@ class ApiController extends Controller
         });
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $this->validate($request, [
+            'object' => 'required'
+        ]);
+
         try {
-            $this->model->createOrFail(request()->all());
+            $this->model->createOrFail(request()->get('object'));
             $response = [ 'status' => '0' ];
-        } catch (Exception $e) {
-            $reponse = [ 'status' => '1' ];
-        } finally {
-            return response()->json($response);
+        } catch (\Exception $e) {
+            $response = [ 'status' => '1' ];
         }
+
+        return response()->json($response);
     }
 }
 
