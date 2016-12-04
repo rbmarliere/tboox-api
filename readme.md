@@ -21,7 +21,7 @@ This is the tboox web tree. It provides a web api for usage inside the tboox And
 * Receive the index of all items in the user collection that may be filtered by the GET parameter 'filter'
 
 ###### POST /api/collection
-* Store a new item in the user collection using the POST parameter 'collection'
+* Store a new item in the user collection using the POST parameter 'object'
 
 #### REVIEW
 
@@ -35,7 +35,7 @@ This is the tboox web tree. It provides a web api for usage inside the tboox And
 * Show information on an uuid specifiable review
 
 ###### POST /api/review
-* Store a new review of a specific book using the POST parameter 'review'
+* Store a new review of a specific book using the POST parameter 'object'
 
 #### USER
 
@@ -49,7 +49,7 @@ This is the tboox web tree. It provides a web api for usage inside the tboox And
 * Unsubscribe from an uuid specifiable user.
 
 ###### POST /api/user/login
-* Logs the user in the api middleware using the POST parameter 'user'
+* Logs the user in the api middleware using the POST parameter 'object'
 
 ## License
 

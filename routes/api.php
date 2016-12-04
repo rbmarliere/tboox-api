@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => 'auth:api'], function() {
+Route::group(['middleware' => 'auth:api'], function()
+{
     /* -*- RESOURCES -*- */
     Route::resource(
         '/book',
@@ -53,7 +54,8 @@ Route::group(['middleware' => 'auth:api'], function() {
     );
 
     /* -*- USER -*- */
-    Route::group(['prefix' => 'user'], function() {
+    Route::group(['prefix' => 'user'], function()
+    {
         /* -*- GET -*- */
         Route::get('timeline', 'Api\UserController@index');
         Route::get('{user_id}/subscribe', 'Api\UserController@subscribe');
