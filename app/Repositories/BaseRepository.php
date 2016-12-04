@@ -26,7 +26,7 @@ class BaseRepository implements Repository
     public function index() : Collection
     {
         return $this->model
-            ->get();
+            ->all();
     }
 
     public function show(integer $uuid) : Model
