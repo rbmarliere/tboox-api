@@ -18,7 +18,7 @@ This is the tboox web tree. It provides a web api for usage inside the tboox And
 * Destroy an uuid specifiable item from the user collection
 
 ###### GET /api/collection
-* Receive the index of all items in the user collection
+* Receive the index of all items in the user collection that may be filtered by the GET parameter 'filter'
 
 ###### POST /api/collection
 * Store a new item in the user collection using the POST parameter 'collection'
@@ -40,7 +40,7 @@ This is the tboox web tree. It provides a web api for usage inside the tboox And
 #### USER
 
 ###### GET /api/user/timeline
-* Receive the index of the user timeline
+* Receive the index of the user timeline that may be filtered by the GET parameter 'filter'
 
 ###### GET /api/user/\{uuid}/subscribe
 * User A subscribe to an uuid specifiable user B, so that his reviews appears in user A timeline
