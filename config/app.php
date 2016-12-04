@@ -227,7 +227,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Fractal' => Spatie\Fractal\FractalFacade::class,
-        'Uuid' => Webpatser\Uuid\Uuid::class,
     ],
 
 ];
