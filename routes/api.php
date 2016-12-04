@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     /* -*- RESOURCES -*- */
     Route::resource(
         '/book',
-        'api\BookController',
+        'Api\BookController',
         ['only' => [
             'index',
             'show'
@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     );
     Route::resource(
         '/collection',
-        'api\CollectionController',
+        'Api\CollectionController',
         ['only' => [
             'destroy',
             'index',
@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     );
     Route::resource(
         '/review',
-        'api\ReviewController',
+        'Api\ReviewController',
         ['only' => [
             'destroy',
             'index',
@@ -44,7 +44,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     );
     Route::resource(
         '/user',
-        'api\UserController',
+        'Api\UserController',
         ['only' => [
             'index',
             'show',
@@ -55,12 +55,12 @@ Route::group(['middleware' => 'auth:api'], function() {
     /* -*- USER -*- */
     Route::group(['prefix' => 'user'], function() {
         /* -*- GET -*- */
-        Route::get('timeline', 'api\UserController@index');
-        Route::get('{user_id}/subscribe', 'api\UserController@subscribe');
-        Route::get('{user_id}/unsubscribe', 'api\UserController@unsubscribe');
+        Route::get('timeline', 'Api\UserController@index');
+        Route::get('{user_id}/subscribe', 'Api\UserController@subscribe');
+        Route::get('{user_id}/unsubscribe', 'Api\UserController@unsubscribe');
 
         /* -*- POST -*- */
-        Route::post('login', 'api\UserController@login');
+        Route::post('login', 'Api\UserController@login');
     });
 
 });
