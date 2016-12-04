@@ -7,6 +7,7 @@ use App\Repositories\Repository;
 use App\Serializers\Api as Serializer;
 use App\Traits\RemembersResponses;
 use App\Transformers\Transformer;
+use League\Fractal\TransformerAbstract;
 
 class ApiController extends Controller
 {
@@ -17,7 +18,7 @@ class ApiController extends Controller
     protected $serializer;
     protected $transformer;
 
-    public function __construct(Repository $model, Serializer $serializer, Transformer $transformer)
+    public function __construct(Repository $model, Serializer $serializer, TransformerAbstract $transformer)
     {
         $this->includes = [];
         $this->model = $model;
