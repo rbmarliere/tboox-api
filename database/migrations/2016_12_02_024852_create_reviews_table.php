@@ -15,6 +15,7 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
+            $table->uuid('uuid');
             $table->integer('collection_id')->unsigned();
             $table->foreign('collection_id')->references('id')->on('collections');
             $table->integer('rating');
