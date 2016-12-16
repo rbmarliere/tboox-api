@@ -57,9 +57,10 @@ Route::group(['middleware' => 'secure:auth:api'], function()
     Route::group(['prefix' => 'user'], function()
     {
         /* -*- GET -*- */
-        Route::get('timeline', 'Api\UserController@index');
-        Route::get('{user_id}/subscribe', 'Api\UserController@subscribe');
-        Route::get('{user_id}/unsubscribe', 'Api\UserController@unsubscribe');
+        Route::get('timeline', 'Api\UserController@timeline');
+        Route::get('subscriptions', 'Api\UserController@subscriptions');
+        Route::get('{uuid}/subscribe', 'Api\UserController@subscribe');
+        Route::get('{uuid}/unsubscribe', 'Api\UserController@unsubscribe');
 
         /* -*- POST -*- */
         Route::post('login', 'Api\UserController@login');

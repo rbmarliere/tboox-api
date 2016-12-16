@@ -40,7 +40,10 @@ This is the tboox web tree. It provides a web api for usage inside the tboox And
 #### USER
 
 ###### GET /api/user/timeline
-* Receive the index of the user timeline that may be filtered by the GET parameter 'filter'
+* Receive the user timeline that may be filtered by the GET parameter 'filter'
+
+###### GET /api/user/subscriptions
+* Receive the index of all other users subscribed to the user
 
 ###### GET /api/user/\{uuid}/subscribe
 * User A subscribe to an uuid specifiable user B, so that his reviews appears in user A timeline

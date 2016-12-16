@@ -27,4 +27,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function subscribed_users()
+    {
+        return $this->belongsToMany('User', 'user_user', 'user_id', 'subs_user_id');
+    }
+
 }
