@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => 'auth:api'], function()
+Route::group(['middleware' => 'secure:auth:api'], function()
 {
     /* -*- RESOURCES -*- */
     Route::resource(
