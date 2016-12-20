@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Repositories\User as User;
 use App\Serializers\Api as Serializer;
 use App\Transformers\User as UserTransformer;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -98,7 +97,7 @@ class UserController extends ApiController
         $response = [
             'status' => '0',
             'message' => 'OK',
-            'token' => compact('token')
+            'token' => $token
         ];
 
         return response()->json($response);
