@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => 'secure:auth:api'], function()
+Route::group(['middleware' => ['secure', 'jwt.auth', 'api']], function()
 {
     /* -*- RESOURCES -*- */
     Route::resource(
@@ -61,9 +61,12 @@ Route::group(['middleware' => 'secure:auth:api'], function()
         Route::get('subscriptions', 'Api\UserController@subscriptions');
         Route::get('{uuid}/subscribe', 'Api\UserController@subscribe');
         Route::get('{uuid}/unsubscribe', 'Api\UserController@unsubscribe');
-
-        /* -*- POST -*- */
-        Route::post('login', 'Api\UserController@login');
     });
 
+});
+
+/* -*- LOGIN -*- */
+Route::group(['middleware' => ['secure', 'api'], 'prefix' => 'user'], function()
+{
+    Route::post('login', 'Api\UserController@login');
 });

@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Repositories\User as User;
 use App\Serializers\Api as Serializer;
 use App\Transformers\User as UserTransformer;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UserController extends ApiController
 {
@@ -83,7 +86,22 @@ class UserController extends ApiController
 
     public function login()
     {
-        return response()->json('hello');
+        $credentials = request()->only('email', 'password');
+
+        try {
+            if (! $token = JWTAuth::attempt($credentials))
+                return response()->json(['error' => 'invalid_credentials'], 401);
+        } catch (JWTException $e) {
+            return response()->json(['error' => 'could_not_create_token'], 500);
+        }
+
+        $response = [
+            'status' => '0',
+            'message' => 'OK',
+            'token' => compact('token')
+        ];
+
+        return response()->json($response);
     }
 }
 
