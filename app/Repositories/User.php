@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Support\Collection;
 use App\Models\User as M_User;
 use App\Models\Review;
 

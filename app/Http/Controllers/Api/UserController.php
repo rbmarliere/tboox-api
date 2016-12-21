@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Repositories\User as User;
 use App\Serializers\Api as Serializer;
+use App\Traits\RemembersResponses;
 use App\Transformers\User as UserTransformer;
 use Illuminate\Http\Request;
 use JWTAuth;
@@ -11,6 +12,8 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UserController extends ApiController
 {
+    use RemembersResponses;
+
     public function __construct(User $model, Serializer $serializer, UserTransformer $transformer)
     {
         $this->includes = [];

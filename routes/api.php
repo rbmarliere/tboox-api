@@ -15,6 +15,16 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => ['secure', 'jwt.auth', 'api']], function()
 {
+    /* -*- USER -*- */
+    Route::group(['prefix' => 'user'], function()
+    {
+        /* -*- GET -*- */
+        Route::get('timeline', 'Api\UserController@timeline');
+        Route::get('subscriptions', 'Api\UserController@subscriptions');
+        Route::get('{uuid}/subscribe', 'Api\UserController@subscribe');
+        Route::get('{uuid}/unsubscribe', 'Api\UserController@unsubscribe');
+    });
+
     /* -*- RESOURCES -*- */
     Route::resource(
         '/book',
@@ -52,16 +62,6 @@ Route::group(['middleware' => ['secure', 'jwt.auth', 'api']], function()
             'store'
         ]]
     );
-
-    /* -*- USER -*- */
-    Route::group(['prefix' => 'user'], function()
-    {
-        /* -*- GET -*- */
-        Route::get('timeline', 'Api\UserController@timeline');
-        Route::get('subscriptions', 'Api\UserController@subscriptions');
-        Route::get('{uuid}/subscribe', 'Api\UserController@subscribe');
-        Route::get('{uuid}/unsubscribe', 'Api\UserController@unsubscribe');
-    });
 
 });
 
