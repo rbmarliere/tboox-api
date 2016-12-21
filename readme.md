@@ -39,6 +39,9 @@ This is the tboox web tree. It provides a web api for usage inside the tboox And
 
 #### USER
 
+###### GET /api/user
+* Receive the index of all users that may be filtered by the GET parameter 'filter'
+
 ###### GET /api/user/timeline
 * Receive the user timeline that may be filtered by the GET parameter 'filter'
 
