@@ -14,4 +14,9 @@ class Book extends Model
         'title',
         'synopsis'
     ];
+
+    public function collections()
+    {
+        return $this->hasMany('App\Models\Collection');
+    }
 }

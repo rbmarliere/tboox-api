@@ -33,4 +33,9 @@ class User extends Authenticatable
         return $this->belongsToMany('User', 'user_user', 'user_id', 'subs_user_id');
     }
 
+    public function collections()
+    {
+        return $this->hasMany('App\Models\Collection');
+    }
+
 }

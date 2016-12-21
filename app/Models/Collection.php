@@ -14,4 +14,14 @@ class Collection extends Model
         'book_id',
         'user_id'
     ];
+
+    public function book()
+    {
+        return $this->belongsTo('App\Models\Book');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

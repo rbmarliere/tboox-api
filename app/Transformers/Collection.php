@@ -11,8 +11,7 @@ class Collection extends TransformerAbstract
     {
         return [
             'uuid' => $model->uuid,
-            'book_id' => $model->book_id,
-            'user_id' => $model->user_id,
+            'book_id' => $model->book()->first()->uuid,
             'created_at' => $model->created_at->format("Y-m-d")
         ];
     }
