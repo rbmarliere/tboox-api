@@ -21,8 +21,8 @@ Route::group(['middleware' => ['secure', 'jwt.auth', 'api']], function()
         /* -*- GET -*- */
         Route::get('timeline', 'Api\UserController@timeline');
         Route::get('subscriptions', 'Api\UserController@subscriptions');
-        Route::get('{uuid}/subscribe', 'Api\UserController@subscribe');
-        Route::get('{uuid}/unsubscribe', 'Api\UserController@unsubscribe');
+        Route::get('subscribe/{uuid}', 'Api\UserController@subscribe');
+        Route::get('unsubscribe/{uuid}', 'Api\UserController@unsubscribe');
     });
 
     /* -*- RESOURCES -*- */

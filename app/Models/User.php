@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function subscribed_users()
     {
-        return $this->belongsToMany('User', 'user_user', 'user_id', 'subs_user_id');
+        return $this->belongsToMany('App\Models\User', 'user_user', 'user_id', 'subs_user_id');
     }
 
     public function collections()
