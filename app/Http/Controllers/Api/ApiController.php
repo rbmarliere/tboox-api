@@ -88,7 +88,7 @@ class ApiController extends Controller
         } catch (\Exception $e) {
             $response = [
                 'status' => '1',
-                'message' => 'ERROR'
+                'message' => $e->getMessage()
             ];
         }
 
