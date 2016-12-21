@@ -18,7 +18,7 @@ class BaseRepository implements Repository
             ->create($fields);
     }
 
-    public function destroyOrFail(string $uuid) : boolean
+    public function destroyOrFail(string $uuid)
     {
         $deleted = $this->show($uuid);
 

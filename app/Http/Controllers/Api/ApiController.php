@@ -31,6 +31,7 @@ class ApiController extends Controller
     {
         try {
             $this->model->destroyOrFail($uuid);
+            $this->forget();
             $response = [
                 'status' => '0',
                 'message' => 'Remocao realizada com sucesso!'
@@ -38,7 +39,7 @@ class ApiController extends Controller
         } catch (\Exception $e) {
             $response = [
                 'status' => '1',
-                'message' => 'ERROR'
+                'message' => $e->getMessage()
             ];
         }
 
@@ -81,6 +82,7 @@ class ApiController extends Controller
 
         try {
             $this->model->createOrFail(request()->get('object'));
+            $this->forget();
             $response = [
                 'status' => '0',
                 'message' => 'Registro realizado com sucesso!'
